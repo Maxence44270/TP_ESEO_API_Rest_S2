@@ -29,5 +29,9 @@ public class VilleController {
 		
 		return listeVille;
 	}
+	
+	//@RequestMapping(value = "/ville", method = RequestMethod.POST);
+	//public void post 
+	
 
 }
