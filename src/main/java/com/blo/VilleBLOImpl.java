@@ -17,8 +17,24 @@ public class VilleBLOImpl implements VilleBLO {
 	public ArrayList<Ville> getInfoVilles (String codePostal){
 		ArrayList<Ville> listVille = new ArrayList<Ville>();
 		
+		listVille = villeDAO.findVillesByPostCode(codePostal);
+		return listVille;
+	}
+	
+	public ArrayList<Ville> getAllVilles (){
+		ArrayList<Ville> listVille = new ArrayList<Ville>();
+		
 		listVille = villeDAO.findAllVilles();
 		return listVille;
 	}
+	
+	public Ville postVille (String nom) {
+		return villeDAO.postVille(nom);
+	}
+	
+	public void deleteVille (String nom) {
+		villeDAO.deleteVille(nom);
+	}
+	
 
 }

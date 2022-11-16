@@ -7,5 +7,11 @@ import com.dto.Ville;
 public interface VilleDAO {
 	
 	public ArrayList<Ville> findAllVilles();
+	
+	public ArrayList<Ville> findVillesByPostCode(String codePostal);
+	
+	public Ville postVille (String nom);
+	
+	public void deleteVille (String nom);
 
 }

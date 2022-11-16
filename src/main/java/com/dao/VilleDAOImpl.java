@@ -44,5 +44,82 @@ public class VilleDAOImpl implements VilleDAO {
 		
 		return listVille;
 	}
+	
+	public ArrayList<Ville> findVillesByPostCode(String codePostal) {
+		System.out.println("find Ville by postcode : " + codePostal);
+		
+		ArrayList<Ville> listVille = new ArrayList<Ville>();
+		
+		String url="jdbc:mysql://localhost:3306/maven";
+		String username="root";
+		String password="network";
+		
+		try {
+			Connection con = DriverManager.getConnection(url, username, password);
+			Statement statement = con.createStatement();
+			ResultSet result = statement.executeQuery("Select * from ville_france WHERE Code_postal = " + codePostal);
+			
+			while (result.next()) {
+				Ville ville = new Ville();
+				ville.setCodePostal(result.getString("Code_postal"));
+				//ville.setLigne(result.getString(""));
+				ville.setNomCommune(result.getString("Nom_commune"));
+				
+				listVille.add(ville);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listVille;
+	}
+	
+	public Ville postVille (String nom) {
+		String url="jdbc:mysql://localhost:3306/maven";
+		String username="root";
+		String password="network";
+		
+		Ville ville = new Ville();
+		
+		try {
+			Connection con = DriverManager.getConnection(url, username, password);
+			Statement statement = con.createStatement();
+			ville.setCodePostal("44270");
+			ville.setNomCommune(nom);
+			
+			System.out.println("INSERT INTO ville_france VALUES('99999', '" + ville.getNomCommune() + "',"
+					+ " '" + ville.getCodePostal() + "', '"+ ville.getNomCommune() + "', '', '', '')");
+			
+			int result = statement.executeUpdate("INSERT INTO ville_france VALUES('99999', '" + ville.getNomCommune() + "',"
+					+ " '" + ville.getCodePostal() + "', '"+ ville.getNomCommune() + "', '', '', '')");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ville;
+
+	}
+	
+	public void deleteVille (String nom) {
+		String url="jdbc:mysql://localhost:3306/maven";
+		String username="root";
+		String password="network";
+		
+		try {
+			Connection con = DriverManager.getConnection(url, username, password);
+			Statement statement = con.createStatement();
+			System.out.println("DELETE * FROM ville_france WHERE Nom_commune = '"+ nom+ "'");
+			int result = statement.executeUpdate("DELETE FROM ville_france WHERE Nom_commune = '"+ nom+ "'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 
 }
