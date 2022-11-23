@@ -31,8 +31,9 @@ public class VilleDAOImpl implements VilleDAO {
 			while (result.next()) {
 				Ville ville = new Ville();
 				ville.setCodePostal(result.getString("Code_postal"));
-				//ville.setLigne(result.getString(""));
 				ville.setNomCommune(result.getString("Nom_commune"));
+				ville.setLatitude(result.getString("Latitude"));
+				ville.setLongitude(result.getString("Longitude"));
 				
 				listVille.add(ville);
 			}
@@ -62,8 +63,9 @@ public class VilleDAOImpl implements VilleDAO {
 			while (result.next()) {
 				Ville ville = new Ville();
 				ville.setCodePostal(result.getString("Code_postal"));
-				//ville.setLigne(result.getString(""));
 				ville.setNomCommune(result.getString("Nom_commune"));
+				ville.setLatitude(result.getString("Latitude"));
+				ville.setLongitude(result.getString("Longitude"));
 				
 				listVille.add(ville);
 			}
