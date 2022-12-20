@@ -10,6 +10,8 @@ public interface VilleBLO {
 	
 	public ArrayList<Ville> getAllVilles ();
 	
+	public Ville getVilleByName(String nomCommune);
+	
 	public Ville postVille(String nom);
 	
 	public void deleteVille(String nom);

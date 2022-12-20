@@ -78,6 +78,34 @@ public class VilleDAOImpl implements VilleDAO {
 		return listVille;
 	}
 	
+	public Ville findVilleByName(String nomCommune) {
+		Ville ville = new Ville();
+		
+		System.out.println("find Ville by nomCommune : " + nomCommune);
+		
+		String url="jdbc:mysql://localhost:3306/maven";
+		String username="root";
+		String password="network";
+		
+		try {
+			Connection con = DriverManager.getConnection(url, username, password);
+			Statement statement = con.createStatement();
+			ResultSet result = statement.executeQuery("Select * from ville_france WHERE Nom_commune LIKE '" + nomCommune + "'");
+			
+			while (result.next()) {
+				ville.setCodePostal(result.getString("Code_postal"));
+				ville.setNomCommune(result.getString("Nom_commune"));
+				ville.setLatitude(result.getString("Latitude"));
+				ville.setLongitude(result.getString("Longitude"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ville;
+	}
+	
 	public Ville postVille (String nom) {
 		String url="jdbc:mysql://localhost:3306/maven";
 		String username="root";

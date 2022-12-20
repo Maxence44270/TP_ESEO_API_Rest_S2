@@ -28,6 +28,10 @@ public class VilleBLOImpl implements VilleBLO {
 		return listVille;
 	}
 	
+	public Ville getVilleByName(String nomCommune) {
+		return villeDAO.findVilleByName(nomCommune);
+	}
+	
 	public Ville postVille (String nom) {
 		return villeDAO.postVille(nom);
 	}

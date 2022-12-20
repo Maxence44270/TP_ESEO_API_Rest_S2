@@ -10,6 +10,8 @@ public interface VilleDAO {
 	
 	public ArrayList<Ville> findVillesByPostCode(String codePostal);
 	
+	public Ville findVilleByName(String nomCommune);
+	
 	public Ville postVille (String nom);
 	
 	public void deleteVille (String nom);

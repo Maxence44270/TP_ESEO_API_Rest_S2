@@ -42,9 +42,18 @@ public class VilleController {
 		return listeVille;
 	}
 	
+	//fonction pour récupérer une ville par son nom
+	@RequestMapping(value = "/villeName", method=RequestMethod.GET)
+	@ResponseBody
+	public Ville getVille(@RequestParam(required = false, value="nomCommune") String nomCommune) {
+		System.out.println("getVille :");
+		
+		return villeBLOService.getVilleByName(nomCommune);
+	}
+	
 	//fonction pour envoyer puis afficher une ville dans la base de données 
 	
-	@RequestMapping(value = "/postville", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/postville", method = {RequestMethod.POST})
 	@ResponseBody
 	public Ville post () {
 		System.out.println("Post");
